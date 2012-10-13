@@ -90,14 +90,14 @@ public class MainActivity extends Activity {
 
 			byte[] data = new byte[len];
 			System.arraycopy(mBuf, 0, data, 0, len);
-			byte[] ret1 = f.transceive(data);
-
-			data = new byte[11];
-			data[0] = 11;
-			data[1] = (byte)0xa4;
-			System.arraycopy(mNfcId, 0, data, 2, mNfcId.length);
-			data[10] = 0x00;
 			f.transceive(data);
+
+//			data = new byte[11];
+//			data[0] = 11;
+//			data[1] = (byte)0xa4;
+//			System.arraycopy(mNfcId, 0, data, 2, mNfcId.length);
+//			data[10] = 0x00;
+//			f.transceive(data);
 
 			f.close();
 		} catch (Exception e) {
@@ -110,8 +110,8 @@ public class MainActivity extends Activity {
 		mBuf[1] = (byte)0x06;
 		System.arraycopy(mNfcId, 0, mBuf, 2, mNfcId.length);
 		mBuf[10] = 0x01; // サービス数
-		mBuf[11] = (byte)0x00;
-		mBuf[12] = (byte)0x09;
+		mBuf[11] = (byte)0x09;
+		mBuf[12] = (byte)0x00;
 		mBuf[13] = 0x01; // ブロック数
 		mBuf[14] = (byte)0x80;
 		mBuf[15] = 0x01;
